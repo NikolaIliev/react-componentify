@@ -83,7 +83,7 @@ class Componentify extends Component<ComponentifyProps, {}> {
       if (!regex) {
         throw new Error("Invalid regex");
       }
-      
+
       if(!regex.global) {
         throw new Error("Regex missing global flag")
       }
@@ -141,7 +141,7 @@ class Componentify extends Component<ComponentifyProps, {}> {
       const matchIndex = currtentConverter.match.index;
       const textBeforeMatch = str.slice(0, matchIndex);
       const textAfterMatch = str.slice(
-        matchIndex + currtentConverter.match[0].length
+        matchIndex + currtentConverter.match[0].length - (currtentConverter.goBack || 0)
       );
       str = textAfterMatch;
 
