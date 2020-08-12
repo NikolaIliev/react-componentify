@@ -1,4 +1,3 @@
-// @flow
 import React, { Component } from "react";
 
 export const LINK_REGEX = new RegExp(
@@ -41,38 +40,20 @@ export const brTagConverter = {
   component: "br"
 };
 
-type Match = RegExp$matchResult;
-type PropsObj = { [key: string]: { [key: string]: string } };
-
-type PropsFunc = Match => { [key: string]: string };
-
-type Converter = {
-  regex: RegExp,
-  component: string | (() => void),
-  props?: PropsObj | PropsFunc,
-  innerText?: Match => void,
-  match?: Match
-};
-
-type ComponentifyProps = {
-  text: string,
-  converters: Array<Converter>
-};
-
-class Componentify extends Component<ComponentifyProps, {}> {
+class Componentify extends Component {
   static defaultProps = {
     text: "",
     plainTextComponent: "span",
     converters: []
   };
 
-  getPlainTextComponent(text: string, key?: string) {
+  getPlainTextComponent(text, key) {
     const { plainTextComponent, plainTextStyle } = this.props
 
     return React.createElement(plainTextComponent, { key, style: plainTextStyle }, text);
   }
 
-  getCurrentConverter(text: string) {
+  getCurrentConverter(text) {
     const { converters } = this.props;
 
     return converters.reduce((currtentConverter, converter) => {
@@ -104,7 +85,7 @@ class Componentify extends Component<ComponentifyProps, {}> {
     }, null);
   }
 
-  generateComponent(converter: Converter, key: string): React$CreateElement {
+  generateComponent(converter, key) {
     const { component, match } = converter;
     let { props = {} } = converter;
     let { innerText } = converter;
@@ -127,7 +108,7 @@ class Componentify extends Component<ComponentifyProps, {}> {
     return React.createElement(component, props, children);
   }
 
-  generateComponentList(text: string, prevMatch: string) {
+  generateComponentList(text, prevMatch) {
     let str = text;
     let components = [];
 
