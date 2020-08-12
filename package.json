@@ -3,7 +3,7 @@
   "version": "1.0.2",
   "private": false,
   "author": "Simona Peneva <peneva.simona@gmail.com>",
-  "main": "lib/Componentify.js",
+  "main": "src/Componentify.js",
   "dependencies": {
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
