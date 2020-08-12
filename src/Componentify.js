@@ -41,12 +41,6 @@ export const brTagConverter = {
 };
 
 class Componentify extends Component {
-  static defaultProps = {
-    text: "",
-    plainTextComponent: "span",
-    converters: []
-  };
-
   getPlainTextComponent(text, key) {
     const { plainTextComponent, plainTextStyle } = this.props
 
@@ -166,6 +160,12 @@ class Componentify extends Component {
 
     return this.generateComponentList(text, "");
   }
+}
+
+Componetify.defaultProps = {
+    text: "",
+    plainTextComponent: "span",
+    converters: []
 }
 
 export default Componentify;
