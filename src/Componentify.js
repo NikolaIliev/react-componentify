@@ -162,7 +162,7 @@ class Componentify extends Component {
   }
 }
 
-Componetify.defaultProps = {
+Componentify.defaultProps = {
     text: "",
     plainTextComponent: "span",
     converters: []
